@@ -13,7 +13,7 @@ const validate = (formData, e, setError, { submit, type }) => {
   else if (description === "") setError("Description cannot be empty");
   else {
     setError("");
-    e.target.classList.add("loading");
+    e.currentTarget.classList.add("loading");
     submit(formData, type);
   }
 };
@@ -53,7 +53,7 @@ export default props => {
                 name="title"
                 value={formData.title}
                 onChange={e =>
-                  setFormData({ ...formData, title: e.target.value })
+                  setFormData({ ...formData, title: e.currentTarget.value })
                 }
               />
             </div>
@@ -63,7 +63,10 @@ export default props => {
                 name="description"
                 value={formData.description}
                 onChange={e =>
-                  setFormData({ ...formData, description: e.target.value })
+                  setFormData({
+                    ...formData,
+                    description: e.currentTarget.value
+                  })
                 }
               />
             </div>

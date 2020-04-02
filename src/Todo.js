@@ -90,7 +90,7 @@ export default ({ axios }) => {
             <div
               key={todo._id}
               id={todo._id}
-              onClick={e => setView(["edit", e.target.id])}
+              onClick={e => setView(["edit", e.currentTarget.id])}
             >
               <div
                 className="modal-exit"
@@ -100,8 +100,8 @@ export default ({ axios }) => {
                   e.stopPropagation();
                   setView([
                     "delete",
-                    e.target.getAttribute("titlename"),
-                    e.target.id
+                    e.currentTarget.getAttribute("titlename"),
+                    e.currentTarget.id
                   ]);
                 }}
               >
