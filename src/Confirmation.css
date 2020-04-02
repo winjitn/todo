@@ -1,0 +1,17 @@
+#confirmation-ctn {
+  width: 300px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#confirmation-title {
+  width: 100%;
+  text-align: center;
+  margin: 10px 0;
+}

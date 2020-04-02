@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
 
-function App() {
+import Axios from "./config/axios";
+import Todo from "./Todo";
+import Login from "./Login";
+
+export default () => {
+  const [token, setToken] = useState("");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {token === "" ? (
+        <Login setToken={setToken} />
+      ) : (
+        <Todo axios={Axios(token.token)} />
+      )}
+    </>
   );
-}
-
-export default App;
+};

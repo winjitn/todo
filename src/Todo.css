@@ -1,0 +1,47 @@
+* {
+  font-weight: bolder;
+}
+
+#todos {
+  margin: 50px 20px;
+}
+
+#todos > div {
+  position: relative;
+  height: 200px;
+  width: 100%;
+  margin: 20px 0;
+  padding: 20px;
+  box-shadow: 0 5px 10px 2px rgb(209, 209, 209);
+  cursor: pointer;
+
+  overflow: auto;
+}
+
+.todo-title {
+  font-size: x-large;
+  margin-bottom: 20px;
+}
+
+.todo-date {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  color: rgb(165, 165, 165);
+}
+
+#create-btn {
+  position: fixed;
+  height: 60px;
+  width: 60px;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgb(235, 79, 79);
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 60px;
+  font-size: xx-large;
+  cursor: pointer;
+  display: block;
+}

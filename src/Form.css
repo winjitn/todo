@@ -1,0 +1,34 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#form-ctn {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  background-color: white;
+  padding: 50px;
+  border-radius: 10px;
+  margin: auto;
+}
+
+textarea[name="description"] {
+  height: 20vh !important;
+  resize: none !important;
+}
+
+.modal-exit {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: large;
+  cursor: pointer;
+}
