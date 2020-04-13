@@ -18,62 +18,54 @@ const validate = (formData, e, setError, { submit, type }) => {
   }
 };
 
-const cancel = (setView, e) => {
-  e.preventDefault();
+export const cancel = (setView) => {
   setView(["list", null]);
 };
 
-export default props => {
+export default (props) => {
   const { existingForm } = props;
 
   const [formData, setFormData] = useState({
     title: existingForm ? existingForm.title : "",
-    description: existingForm ? existingForm.description : ""
+    description: existingForm ? existingForm.description : "",
+    _id: existingForm ? existingForm._id : "",
   });
   const [error, setError] = useState("");
 
   return (
-    <div className="modal" onClick={() => props.setView(["list", null])}>
+    <div className="modal" onClick={() => cancel(props.setView)}>
       <div className="ui container">
-        <div id="form-ctn" onClick={e => e.stopPropagation()}>
-          <div
-            className="modal-exit"
-            onClick={() => props.setView(["list", null])}
-          >
+        <div id="form-ctn" onClick={(e) => e.stopPropagation()}>
+          <div className="modal-exit" onClick={() => cancel(props.setView)}>
             &#10005;
           </div>
           <form
             className={`ui form ${error === "" ? "" : "error"}`}
-            onSubmit={e => validate(formData, e, setError, props)}
+            onSubmit={(e) => validate(formData, e, setError, props)}
           >
-            <div className="field">
-              <label>Title</label>
-              <input
-                type="text"
-                name="title"
-                value={formData.title}
-                onChange={e =>
-                  setFormData({ ...formData, title: e.currentTarget.value })
-                }
-              />
-            </div>
-            <div className="field">
-              <label>Description</label>
-              <textarea
-                name="description"
-                value={formData.description}
-                onChange={e =>
+            {["title", "description"].map((field) => {
+              let fieldProps = {
+                type: "text",
+                name: field,
+                value: formData[field],
+                onChange: (e) =>
                   setFormData({
                     ...formData,
-                    description: e.currentTarget.value
-                  })
-                }
-              />
-            </div>
-            <button
-              className="ui button"
-              onClick={e => cancel(props.setView, e)}
-            >
+                    [field]: e.currentTarget.value,
+                  }),
+              };
+              return (
+                <div className="field">
+                  <label>{field === "title" ? "Title" : "Description"}</label>
+                  {field === "title" ? (
+                    <input {...fieldProps} />
+                  ) : (
+                    <textarea {...fieldProps} />
+                  )}
+                </div>
+              );
+            })}
+            <button className="ui button" onClick={() => cancel(props.setView)}>
               Cancel
             </button>
             <button className="ui button" type="submit">
