@@ -72,7 +72,7 @@ export default () => {
   return (
     <div>
       <div className="ui container">
-        <div id="todos">
+        <div id="todos" data-testid="todos">
           {todos.map((todo) => (
             <div
               key={todo._id}
@@ -99,7 +99,11 @@ export default () => {
             </div>
           ))}
         </div>
-        <div id="create-btn" onClick={() => setView(["create", null])}>
+        <div
+          id="create-btn"
+          data-testid="create"
+          onClick={() => setView(["create", null])}
+        >
           &#10010;
         </div>
       </div>

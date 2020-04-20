@@ -35,7 +35,11 @@ export default (props) => {
   return (
     <div className="modal" onClick={() => cancel(props.setView)}>
       <div className="ui container">
-        <div id="form-ctn" onClick={(e) => e.stopPropagation()}>
+        <div
+          id="form-ctn"
+          data-testid="form"
+          onClick={(e) => e.stopPropagation()}
+        >
           <div className="modal-exit" onClick={() => cancel(props.setView)}>
             &#10005;
           </div>
@@ -48,6 +52,7 @@ export default (props) => {
                 type: "text",
                 name: field,
                 value: formData[field],
+                placeholder: field,
                 onChange: (e) =>
                   setFormData({
                     ...formData,
@@ -55,7 +60,7 @@ export default (props) => {
                   }),
               };
               return (
-                <div className="field">
+                <div className="field" key={field}>
                   <label>{field === "title" ? "Title" : "Description"}</label>
                   {field === "title" ? (
                     <input {...fieldProps} />
@@ -68,7 +73,7 @@ export default (props) => {
             <button className="ui button" onClick={() => cancel(props.setView)}>
               Cancel
             </button>
-            <button className="ui button" type="submit">
+            <button data-testid="submit" className="ui button" type="submit">
               {props.type === "create" ? "Create" : "Edit"}
             </button>
             <div className="ui error message">
